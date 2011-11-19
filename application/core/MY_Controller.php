@@ -10,7 +10,7 @@ class MY_Controller extends MX_Controller
 		$this->load->library('ion_auth');
 		$this->load->library('form_validation');
 		$this->load->library('template');
-		$this->load->library('my_cache');
+		$this->load->library('licache');
 		$this->load->library('asset');
 		
 		$this->load->helper('asset');
