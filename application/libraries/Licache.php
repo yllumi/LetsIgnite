@@ -12,7 +12,7 @@
  * @version		2.1
  */
 
-class MY_Cache
+class Licache
 {
 	private $_ci;
 	private $_path;
