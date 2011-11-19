@@ -357,6 +357,15 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+|--------------------------------------------------------------------------
+| Site Open
+|--------------------------------------------------------------------------
+|
+| if your site is under maintenance, set this configuration to FALSE
+|
+*/
+$config['site_open'] = TRUE;
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
