@@ -2,7 +2,7 @@
 
 if ( ! class_exists('Controller'))
 {
-	class Controller extends CI_Controller {}
+	class Controller extends Public_Controller {}
 }
 
 class Auth extends Controller {
