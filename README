@@ -1,0 +1,39 @@
+======================================
+LetsIgnite
+
+Starter Application for Codeigniter Developers
+http://toniharyanto.cs.upi.edu/letsignite/
+
+by Toni Haryanto
+======================================
+
+LetsIgnite starter is an application designed to facilitate the development 
+of a web-based application using the CodeIgniter PHP framework. Web developers 
+can save time spent on development an application.
+
+DOCUMENTATION:
+Documentation WILL BE located at http://toniharyanto.cs.upi.edu/letsignite/docs/
+
+INSTALLATION:
+Just copy the files from this package to the localhost folder,
+make database and import the all.sql file from assets/sql/ folder,
+then edit database configuration in system/config/database.php.
+
+ELEMENT IN v1.0:
+-Codeigniter v.2.1
+-Codeigniter Ion Auth
+-Modular Extension
+-Template Management with Phil Sturgeon Template Library
+-Frontend and Backend page
+
+DEFAULT LOGIN:
+Username: admin@admin.com
+Password: password    
+
+PARTICIPATION:
+You can participate to develop this starter application at the pull request you send.
+
+Thanks,
+-Toni Haryanto
+ toha.samba@gmail.com
+ @yllumi 
