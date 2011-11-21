@@ -5,7 +5,7 @@ if ( ! class_exists('Controller'))
 	class Controller extends Public_Controller {}
 }
 
-class Auth extends Controller {
+class Home extends Controller {
 
 	function __construct()
 	{
@@ -19,7 +19,7 @@ class Auth extends Controller {
 		if (!$this->ion_auth->logged_in())
 		{
 			//redirect them to the login page
-			redirect('auth/login', 'refresh');
+			redirect('home/login', 'refresh');
 		}
 		elseif (!$this->ion_auth->is_admin())
 		{
@@ -39,7 +39,7 @@ class Auth extends Controller {
 			}
 	
 			
-			$this->load->view('auth/index', $this->data);
+			$this->load->view('home/index', $this->data);
 		}
 	}
 
@@ -67,7 +67,7 @@ class Auth extends Controller {
 			{ //if the login was un-successful
 				//redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+				redirect('home/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
@@ -85,7 +85,7 @@ class Auth extends Controller {
 				'type' => 'password',
 			);
 
-			$this->load->view('auth/login', $this->data);
+			$this->load->view('home/login', $this->data);
 		}
 	}
 
@@ -98,7 +98,7 @@ class Auth extends Controller {
 		$logout = $this->ion_auth->logout();
 
 		//redirect them back to the page they came from
-		redirect('auth', 'refresh');
+		redirect('home', 'refresh');
 	}
 
 	//change password
@@ -110,7 +110,7 @@ class Auth extends Controller {
 
 		if (!$this->ion_auth->logged_in())
 		{
-			redirect('auth/login', 'refresh');
+			redirect('home/login', 'refresh');
 		}
 		
 		$user = $this->ion_auth->user()->row();
@@ -143,7 +143,7 @@ class Auth extends Controller {
 			);
 
 			//render
-			$this->load->view('auth/change_password', $this->data);
+			$this->load->view('home/change_password', $this->data);
 		}
 		else
 		{
@@ -159,7 +159,7 @@ class Auth extends Controller {
 			else
 			{
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('auth/change_password', 'refresh');
+				redirect('home/change_password', 'refresh');
 			}
 		}
 	}
@@ -176,7 +176,7 @@ class Auth extends Controller {
 			);
 			//set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			$this->load->view('auth/forgot_password', $this->data);
+			$this->load->view('home/forgot_password', $this->data);
 		}
 		else
 		{
@@ -186,12 +186,12 @@ class Auth extends Controller {
 			if ($forgotten)
 			{ //if there were no errors
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
+				redirect("home/login", 'refresh'); //we should display a confirmation page here instead of the login page
 			}
 			else
 			{
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect("auth/forgot_password", 'refresh');
+				redirect("home/forgot_password", 'refresh');
 			}
 		}
 	}
@@ -204,12 +204,12 @@ class Auth extends Controller {
 		if ($reset)
 		{  //if the reset worked then send them to the login page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("auth/login", 'refresh');
+			redirect("home/login", 'refresh');
 		}
 		else
 		{ //if the reset didnt work then send them back to the forgot password page
 			$this->session->set_flashdata('message', $this->ion_auth->errors());
-			redirect("auth/forgot_password", 'refresh');
+			redirect("home/forgot_password", 'refresh');
 		}
 	}
 
@@ -225,13 +225,13 @@ class Auth extends Controller {
 		{
 			//redirect them to the auth page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("auth", 'refresh');
+			redirect("home", 'refresh');
 		}
 		else
 		{
 			//redirect them to the forgot password page
 			$this->session->set_flashdata('message', $this->ion_auth->errors());
-			redirect("auth/forgot_password", 'refresh');
+			redirect("home/forgot_password", 'refresh');
 		}
 	}
 
@@ -251,7 +251,7 @@ class Auth extends Controller {
 			$this->data['csrf'] = $this->_get_csrf_nonce();
 			$this->data['user'] = $this->ion_auth->user($id)->row();
 
-			$this->load->view('auth/deactivate_user', $this->data);
+			$this->load->view('home/deactivate_user', $this->data);
 		}
 		else
 		{
@@ -272,7 +272,7 @@ class Auth extends Controller {
 			}
 
 			//redirect them back to the auth page
-			redirect('auth', 'refresh');
+			redirect('home', 'refresh');
 		}
 	}
 
@@ -283,7 +283,7 @@ class Auth extends Controller {
 
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
 		{
-			redirect('auth', 'refresh');
+			redirect('home', 'refresh');
 		}
 
 		//validate form input
@@ -313,7 +313,7 @@ class Auth extends Controller {
 		{ //check to see if we are creating the user
 			//redirect them back to the admin page
 			$this->session->set_flashdata('message', "User Created");
-			redirect("auth", 'refresh');
+			redirect("home", 'refresh');
 		}
 		else
 		{ //display the create user form
@@ -365,7 +365,7 @@ class Auth extends Controller {
 				'type' => 'password',
 				'value' => $this->form_validation->set_value('password_confirm'),
 			);
-			$this->load->view('auth/create_user', $this->data);
+			$this->load->view('home/create_user', $this->data);
 		}
 	}
 
