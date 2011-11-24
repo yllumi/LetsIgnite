@@ -367,5 +367,18 @@ $config['proxy_ips'] = '';
 */
 $config['site_open'] = TRUE;
 
+/*
+|--------------------------------------------------------------------------
+| Module Locations
+|--------------------------------------------------------------------------
+|
+| Modular Extensions: Where are modules located?
+|
+*/
+$config['modules_locations'] = array(
+	APPPATH.'modules/' => '../modules/',
+	WORKPATH.'modules/' => '../../../work/modules/'
+);
+
 /* End of file config.php */
 /* Location: ./application/config/config.php */

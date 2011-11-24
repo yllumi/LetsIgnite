@@ -85,6 +85,6 @@ $config['theme'] = 'default';
 */
 
 $config['theme_locations'] = array(
-	APPPATH.'themes/',
-	ASSETSPATH.'themes/'
+	APPPATH.'themes/' => '../themes/',
+	WORKPATH.'themes/' => '../../../work/themes/'
 );

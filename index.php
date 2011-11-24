@@ -56,7 +56,7 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = 'system';
+	$system_path = 'system/codeigniter';
 
 /*
  *---------------------------------------------------------------
@@ -72,7 +72,19 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = 'application';
+	$application_folder = 'system/letsignite';
+
+/*
+ *---------------------------------------------------------------
+ * WORK FOLDER NAME
+ *---------------------------------------------------------------
+ *
+ * work folder name, default 'work' folder
+ *
+ * NO TRAILING SLASH!
+ *
+ */
+	$work_folder = 'work';
 
 /*
  * --------------------------------------------------------------------
@@ -177,6 +189,9 @@ if (defined('ENVIRONMENT'))
 
 	// Path to the assets folder in root program
 	define('ASSETSPATH', 'assets/');
+	
+	// This only allows you to change the name. ADDONPATH should still be used in the app
+	define('WORKPATH', $work_folder.'/');
 
 	// The path to the "application" folder
 	if (is_dir($application_folder))
