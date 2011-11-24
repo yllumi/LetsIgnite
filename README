@@ -15,9 +15,9 @@ DOCUMENTATION:
 Documentation WILL BE located at http://toniharyanto.cs.upi.edu/letsignite/docs/
 
 INSTALLATION:
-Just copy the files from this package to the localhost folder,
-make database and import the all.sql file from assets/sql/ folder,
-then edit database configuration in system/config/database.php.
+1. Copy the files from this package to the localhost folder
+2. Make database and import the all.sql file from assets/sql/ folder
+3. Edit database configuration in system/config/database.php.
 
 ELEMENT IN v1.0:
 -Codeigniter v.2.1
