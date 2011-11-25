@@ -7,44 +7,22 @@ class Auth extends Public_Controller {
 	function __construct()
 	{
 		parent::__construct();
-	}
-
-	//redirect if needed, otherwise display the user list
-	function index()
-	{
 		
-		if (!$this->ion_auth->logged_in())
-		{
-			//redirect them to the login page
-			redirect('auth/login', 'refresh');
-		}
-		elseif (!$this->ion_auth->is_admin())
-		{
-			//redirect them to the auth page because they must be an administrator to view this
-			redirect($this->config->item('base_url'), 'refresh');
-		}
-		else
-		{
-			//set the flash data error message if there is one
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-
-			//list the users
-			$this->data['users'] = $this->ion_auth->users()->result();
-			foreach ($this->data['users'] as $k => $user)
-			{
-				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-			}
-	
-			
-			$this->load->view('auth/index', $this->data);
-		}
+		// set theme to default theme
+        $theme_path = $this->template->set_theme('default');
+        $this->asset->set_theme($this->template->get_theme_path());
+        
+        $this->template
+			->set_partial('header', 'partials/header')
+			->set_partial('metadata', 'partials/metadata')
+			->set_partial('sidebar', 'partials/sidebar')
+			->set_partial('footer', 'partials/footer')
+			->append_metadata(theme_css('main.css'));
 	}
-	
+
 	//log the user in
 	function login()
 	{
-		$this->data['title'] = "Login";
-
 		//validate form input
 		$this->form_validation->set_rules('identity', 'Identity', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
@@ -70,19 +48,19 @@ class Auth extends Public_Controller {
 		else
 		{  //the user is not logging in so display the login page
 			//set the flash data error message if there is one
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+			$data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
-			$this->data['identity'] = array('name' => 'identity',
+			$data['identity'] = array('name' => 'identity',
 				'id' => 'identity',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('identity'),
 			);
-			$this->data['password'] = array('name' => 'password',
+			$data['password'] = array('name' => 'password',
 				'id' => 'password',
 				'type' => 'password',
 			);
 
-			$this->load->view('auth/login', $this->data);
+			$this->template->title("Login")->build('auth/login', $data);
 		}
 	}
 
