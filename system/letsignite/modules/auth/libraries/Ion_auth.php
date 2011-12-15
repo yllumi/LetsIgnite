@@ -58,11 +58,11 @@ class Ion_auth
 	public function __construct()
 	{
 		$this->ci =& get_instance();
-		$this->ci->load->config('ion_auth', TRUE);
+		$this->ci->load->config('auth/ion_auth', TRUE);
+		$this->ci->load->model('auth/ion_auth_model');
 		$this->ci->load->library('email');
 		$this->ci->load->library('session');
 		$this->ci->lang->load('ion_auth');
-		$this->ci->load->model('auth/ion_auth_model');
 		$this->ci->load->helper('cookie');
 
 		//auto-login the user if they are remembered

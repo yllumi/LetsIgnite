@@ -9,7 +9,7 @@ class MY_Controller extends MX_Controller
 		parent::__construct();
 		$this->load->database();
 		$this->load->library('session');
-		$this->load->library('ion_auth');
+		$this->load->library('auth/ion_auth');
 		$this->load->library('form_validation');
 		$this->load->library('template');
 		$this->load->library('licache');
