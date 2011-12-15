@@ -62,7 +62,7 @@ class Ion_auth
 		$this->ci->load->library('email');
 		$this->ci->load->library('session');
 		$this->ci->lang->load('ion_auth');
-		$this->ci->load->model('ion_auth_model');
+		$this->ci->load->model('auth/ion_auth_model');
 		$this->ci->load->helper('cookie');
 
 		//auto-login the user if they are remembered
