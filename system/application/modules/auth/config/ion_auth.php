@@ -20,9 +20,10 @@
 	/**
 	 * Tables.
 	 **/
+         
 	$config['tables']['groups']          = 'groups';
 	$config['tables']['users']           = 'users';
-	$config['tables']['users_groups']    = 'users_groups';
+	$config['tables']['meta']            = 'users_meta';
 	
 	/**
 	 * Site Title, example.com
@@ -47,10 +48,14 @@
 	/**
 	 * Users table column and Group table column you want to join WITH.
 	 * Joins from users.id
-	 * Joins from groups.id
 	 **/
-	$config['join']['users']       = 'user_id';
-	$config['join']['groups']      = 'group_id';
+	$config['join']       = 'user_id';
+        
+       	/**
+	 * Columns in your meta table,
+	 * id not required.
+	 **/
+	$config['columns']             = array('display_name', 'first_name', 'last_name', 'company', 'lang', 'bio', 'dob', 'gender', 'phone', 'mobile', 'address_line1', 'address_line2', 'address_line3', 'postcode', 'website', 'msn_handle', 'aim_handle', 'yim_handle', 'gtalk_handle', 'gravatar', 'updated_on', 'twitter_access_token', 'twitter_access_token_secret');
 	
 	/**
 	 * A database column which is used to
@@ -72,7 +77,7 @@
 	 * Email Activation for registration
 	 **/
 	$config['email_activation']    = false;
-	
+        	
 	/**
 	 * Allow users to be remembered and enable auto-login
 	 **/
@@ -90,7 +95,7 @@
 
 	/**
 	 * Folder where email templates are stored.
-     * Default : auth/
+         * Default : auth/
 	 **/
 	$config['email_templates']     = 'auth/email/';
 	
