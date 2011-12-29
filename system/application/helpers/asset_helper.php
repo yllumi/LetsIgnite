@@ -34,11 +34,6 @@ function css($asset_name, $module_name = NULL, $attributes = array())
 	return $CI->asset->css($asset_name, $module_name, $attributes);
 }
 
-function theme_css($asset, $attributes = array())
-{
-	return css($asset, '_theme_', $attributes);
-}
-
 function css_url($asset_name, $module_name = NULL)
 {
 	$CI =& get_instance();
@@ -53,6 +48,21 @@ function css_path($asset_name, $module_name = NULL)
 	return $CI->asset->css_path($asset_name, $module_name);
 }
 
+function theme_css($asset, $attributes = array())
+{
+	return css($asset, '_theme_', $attributes);
+}
+
+function theme_css_url($asset)
+{
+	return css_url($asset, '_theme_');
+}
+
+function theme_css_path($asset)
+{
+	return css_path($asset, '_theme_', $attributes);
+}
+
 // ------------------------------------------------------------------------
 
 
@@ -61,11 +71,6 @@ function image($asset_name, $module_name = NULL, $attributes = array())
 	$CI =& get_instance();
 	$CI->load->library('asset');
 	return $CI->asset->image($asset_name, $module_name, $attributes);
-}
-
-function theme_image($asset, $attributes = array())
-{
-	return image($asset, '_theme_', $attributes);
 }
 
 function image_url($asset_name, $module_name = NULL)
@@ -82,6 +87,21 @@ function image_path($asset_name, $module_name = NULL)
 	return $CI->asset->image_path($asset_name, $module_name);
 }
 
+function theme_image($asset, $attributes = array())
+{
+	return image($asset, '_theme_', $attributes);
+}
+
+function theme_image_url($asset)
+{
+	return image_url($asset, '_theme_');
+}
+
+function theme_image_path($asset)
+{
+	return image_path($asset, '_theme_');
+}
+
 // ------------------------------------------------------------------------
 
 
@@ -90,11 +110,6 @@ function js($asset_name, $module_name = NULL, $attributes = array())
 	$CI =& get_instance();
 	$CI->load->library('asset');
 	return $CI->asset->js($asset_name, $module_name, $attributes);
-}
-
-function theme_js($asset, $attributes = array())
-{
-	return js($asset, '_theme_', $attributes);
 }
 
 function js_url($asset_name, $module_name = NULL)
@@ -109,4 +124,19 @@ function js_path($asset_name, $module_name = NULL)
 	$CI =& get_instance();
 	$CI->load->library('asset');
 	return $CI->asset->js_path($asset_name, $module_name);
+}
+
+function theme_js($asset, $attributes = array())
+{
+	return js($asset, '_theme_', $attributes);
+}
+
+function theme_js_url($asset)
+{
+	return js_url($asset, '_theme_');
+}
+
+function theme_js_path($asset)
+{
+	return js_path($asset, '_theme_');
 }
