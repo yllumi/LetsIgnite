@@ -13,7 +13,7 @@ class Authenticated_Controller extends MY_Controller
         }
         
         // set theme to admin theme
-        $theme_path = $this->template->set_theme('default');
+        $this->template->set_theme('default');
         $this->asset->set_theme($this->template->get_theme_path());
         
         $this->template
