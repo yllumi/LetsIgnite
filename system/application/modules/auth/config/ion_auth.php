@@ -28,7 +28,7 @@
 	/**
 	 * Site Title, example.com
 	 */
-	$config['site_title']		   = "Example.com";
+	$config['site_title']		   = "LetsIgnite";
 	
 	/**
 	 * Admin Email, admin@example.com
