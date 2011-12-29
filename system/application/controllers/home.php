@@ -26,7 +26,7 @@ class Home extends Public_Controller {
             redirect('auth/login', 'refresh');
         } elseif ($this->ion_auth->is_admin()) {
             //redirect them to the home page because they must be an administrator to view this
-            redirect('dashboard', 'refresh');
+            redirect('admin', 'refresh');
         } else {
             //set the flash data error message if there is one
             $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
