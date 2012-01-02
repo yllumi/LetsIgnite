@@ -2,6 +2,7 @@
     <input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
 </form>
 <hr/>
+<!--
 <h3>Content</h3>
 <ul class="toggle">
     <li class="icn_new_article"><a href="#">New Article</a></li>
@@ -27,4 +28,9 @@
     <li class="icn_settings"><a href="#">Options</a></li>
     <li class="icn_security"><a href="#">Security</a></li>
     <li class="icn_jump_back"><a href="<?php echo site_url('logout') ?>">Logout</a></li>
+</ul>
+-->
+<h3>Development</h3>
+<ul class="toggle">
+    <li class="icn_settings"><a href="<?php echo site_url('admin/module'); ?>">Module Manager</a></li>
 </ul>

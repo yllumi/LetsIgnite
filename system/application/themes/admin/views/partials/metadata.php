@@ -1,5 +1,5 @@
 	<meta charset="utf-8"/>
-	<title><?php echo $this->config->item('site_title', 'ion_auth'); ?> Dashboard</title>
+	<title><?php echo $this->config->item('site_title', 'ion_auth') .' - '. $template['title']; ?></title>
 	
         <?php echo $template['metadata']; ?>
 
