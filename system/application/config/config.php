@@ -375,6 +375,8 @@ $config['site_open'] = TRUE;
 |--------------------------------------------------------------------------
 |
 | Modular Extensions: Where are modules located?
+| the path must be ended with slash
+| the queue is important, the first is for core modules, the others is for additional modules
 |
 */
 $config['modules_locations'] = array(
