@@ -1,63 +1,64 @@
             <article class="module width_full">
-                <header><h3 class="tabs_involved">Available Modules</h3>
-                    <ul class="tabs">
-                        <li><a href="#tab1">Active</a></li>
-                        <li><a href="#tab2">Inactive</a></li>
-                    </ul>
+                <header>
+					<h3>Addon Modules</h3>
                 </header>
 
-                <div class="tab_container">
-                    <div id="tab1" class="tab_content">
+                <div class="container">
                         <table class="tablesorter" cellspacing="0"> 
                             <thead> 
                                 <tr>
                                     <th>Ver.</th> 
                                     <th>Module Name</th> 
                                     <th>Description</th> 
-                                    <th>Type</th> 
                                     <th>Actions</th> 
                                 </tr> 
                             </thead> 
                             <tbody> 
                             
-                            <?php foreach($modules as $module): ?>
+                            <?php foreach($amodules as $amodule): ?>
                                 <tr>
 									<td>1.0</td> 
-                                    <td><?php echo $module; ?></td> 
+                                    <td><?php echo $amodule; ?></td> 
                                     <td>My first module based on LetsIgnite module development tutorial.</td> 
-                                    <td>Add-On / Core</td>
                                     <td><input type="image" src="<?php echo theme_image_path('icn_edit.png'); ?>" title="Edit"><input type="image" src="<?php echo theme_image_path('icn_trash.png'); ?>" title="Trash"></td> 
                                 </tr>
 							<?php endforeach; ?>
                                 
                             </tbody> 
                         </table>
-                    </div><!-- end of #tab1 -->
+                    </div>
+            </article><!-- end of content manager article -->
+            
+            <div class="clear"></div>
+            
+            <article class="module width_full">
+                <header>
+					<h3>Core Modules</h3>
+                </header>
 
-                    <div id="tab2" class="tab_content">
+                <div class="container">
                         <table class="tablesorter" cellspacing="0"> 
                             <thead> 
                                 <tr>
-									<th>Version</th> 
+                                    <th>Ver.</th> 
                                     <th>Module Name</th> 
-                                    <th>Description</th> 
-                                    <th>Owner</th> 
+                                    <th>Description</th>
                                     <th>Actions</th> 
                                 </tr> 
                             </thead> 
                             <tbody> 
+                            
+                            <?php foreach($cmodules as $cmodule): ?>
                                 <tr>
 									<td>1.0</td> 
-                                    <td>Lorem Ipsum Dolor Sit Amet</td> 
+                                    <td><?php echo $cmodule; ?></td> 
                                     <td>My first module based on LetsIgnite module development tutorial.</td> 
-                                    <td>In Working</td>
-                                    <td><button title="Activate">Activate</button></td> 
-                                </tr>  
+                                    <td><input type="image" src="<?php echo theme_image_path('icn_edit.png'); ?>" title="Edit"><input type="image" src="<?php echo theme_image_path('icn_trash.png'); ?>" title="Trash"></td> 
+                                </tr>
+							<?php endforeach; ?>
+                                
                             </tbody> 
                         </table>
-
-                    </div><!-- end of #tab2 -->
-
-                </div><!-- end of .tab_container -->
+                    </div>
 
             </article><!-- end of content manager article -->

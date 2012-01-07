@@ -13,15 +13,9 @@ class Admin extends Admin_Controller {
 
     function index() {
 		$this->template
-			->set('modules', $this->module_m->scan_modules())
+			->set('amodules', $this->module_m->scan_modules(false))
+			->set('cmodules', $this->module_m->scan_modules(true))
 			->build('index');
     }
-    
-    function check_modules(){
-		
-		$this->template
-			->set('modules', $this->module_m->scan_modules())
-			->build('index');
-	}
 
 }

@@ -20,15 +20,26 @@ class Module_m extends MY_Model
 	 */
 	function scan_modules($is_core = true)
 	{
+		// get module location from configuration in config.php file
 		$location = $this->config->item('modules_locations');
+		
+		// we need the key, not the value
 		$key = array_keys($location);
-		$path = $is_core ? $key[0] : $key[1];
+		
+		// the first for core module, the others for additional module
+		$path = ($is_core) ? $key[0] : $key[1];
+		
+		// check the module available in that folder
 		$modules = scandir($path);
+		
+		
 		$result = array();
 		for($i = 0; $i < count($modules); $i++)
-			// if there is details.php file
+			
+			// if there is details.php file, take that module
 			if(is_file($path.$modules[$i].'/details'.EXT))
 				array_push($result, $modules[$i]);
+		
 		return $result;
 	}
 	
