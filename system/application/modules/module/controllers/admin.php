@@ -17,5 +17,9 @@ class Admin extends Admin_Controller {
 			->set('cmodules', $this->module_m->scan_modules(true))
 			->build('index');
     }
+    
+    function sync_modules(){
+		print_r($this->module_m->sync_modules());
+	}
 
 }

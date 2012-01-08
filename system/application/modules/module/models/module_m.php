@@ -11,6 +11,50 @@ class Module_m extends MY_Model
 	}
 	
 	/**
+	 * Sync Modules
+	 *
+	 * Compare and save new detected module to database
+	 *
+	 * @param	string	$slug	The folder name of the module
+	 * @access	private
+	 * @return	array
+	 */
+	function sync_modules($is_core = true)
+	{
+		// scan module detected
+		$detected = $this->_scan_modules();
+		
+		// get module list from database
+		$saved = $this->order_by('slug', 'asc')->get_all();
+		
+		// get just slug column for comparing
+		$slugs = array();
+		foreach($saved as $row)
+			array_push($slugs, $row->slug);
+		
+		// check the unsaved module
+		$unsave = array_diff($detected, $slugs);
+		
+		// check the unremove module which not found in module location
+		$unremove = array_diff($slugs, $detected);
+		
+		// save the unsave
+		$data = false;
+		foreach($unsave as $val){
+			$details = $this->_scan_module($val, $is_core);
+			$data['name'] = $details[0]->name;
+			$data['version'] = $details[0]->version;
+			$data['description'] = $details[0]->description;
+			$data['menu'] = $details[0]->menu;
+			$data['slug'] = strtolower(url_title($details[0]->name));
+			
+			$this->insert($data);
+		}
+		
+		return $data;
+	}
+	
+	/**
 	 * Scan Modules
 	 *
 	 * Scan Available modules in modules folder
@@ -18,7 +62,7 @@ class Module_m extends MY_Model
 	 * @access	public
 	 * @return	array
 	 */
-	function scan_modules($is_core = true)
+	function _scan_modules($is_core = true)
 	{
 		// get module location from configuration in config.php file
 		$location = $this->config->item('modules_locations');
@@ -44,7 +88,7 @@ class Module_m extends MY_Model
 	}
 	
 	/**
-	 * Scan Class
+	 * Scan Module
 	 *
 	 * Checks to see if a details.php exists and returns a class
 	 *
@@ -52,29 +96,25 @@ class Module_m extends MY_Model
 	 * @access	private
 	 * @return	array
 	 */
-	private function _scan_class($slug, $is_core = FALSE)
+	private function _scan_module($slug, $is_core = FALSE)
 	{
-		$path = $is_core ? APPPATH : ADDONPATH;
+		// get module location from configuration in config.php file
+		$location = $this->config->item('modules_locations');
+		
+		// we need the key, not the value
+		$key = array_keys($location);
+		
+		// the first for core module, the other for additional module
+		$path = ($is_core) ? $key[0] : $key[1];
 
 		// Before we can install anything we need to know some details about the module
-		$details_file = $path . 'modules/' . $slug . '/details'.EXT;
-
-		// Check the details file exists
-		if ( ! is_file($details_file))
-		{
-			$details_file = SHARED_ADDONPATH . 'modules/' . $slug . '/details'.EXT;
-
-			if ( ! is_file($details_file))
-			{
-				return FALSE;
-			}
-		}
+		$details_file = $path . $slug . '/details'.EXT;
 
 		// Sweet, include the file
 		include_once $details_file;
 
 		// Now call the details class
-		$class = 'Module_'.ucfirst(strtolower($slug));
+		$class = 'Module_'.strtolower($slug);
 
 		// Now we need to talk to it
 		return class_exists($class) ? array(new $class, dirname($details_file)) : FALSE;

@@ -1,15 +1,14 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
 class Module_module extends Module {
-
-	public $version = '1.0';
 	
 	public function info()
 	{
 		$info = array(
 			'name' => 'Module',
 			'description' => 'Module manager',
-			'menu' => 'development'
+			'menu' => 'development',
+			'version' => '1.0'
 		);
 
 		return $info;

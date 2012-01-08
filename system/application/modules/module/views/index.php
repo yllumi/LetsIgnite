@@ -1,9 +1,13 @@
             <article class="module width_full">
-                <header>
-					<h3>Addon Modules</h3>
+				 <header><h3 class="tabs_involved">Available Modules</h3>
+                    <ul class="tabs">
+                        <li><a href="#tab1">Add-On</a></li>
+                        <li><a href="#tab2">Core</a></li>
+                    </ul>
                 </header>
 
                 <div class="container">
+					<div id="tab1" class="tab_content">
                         <table class="tablesorter" cellspacing="0"> 
                             <thead> 
                                 <tr>
@@ -27,23 +31,14 @@
                             </tbody> 
                         </table>
                     </div>
-            </article><!-- end of content manager article -->
-            
-            <div class="clear"></div>
-            
-            <article class="module width_full">
-                <header>
-					<h3>Core Modules</h3>
-                </header>
-
-                <div class="container">
+                    
+                    <div id="tab2" class="tab_content">
                         <table class="tablesorter" cellspacing="0"> 
                             <thead> 
                                 <tr>
                                     <th>Ver.</th> 
                                     <th>Module Name</th> 
-                                    <th>Description</th>
-                                    <th>Actions</th> 
+                                    <th>Description</th> 
                                 </tr> 
                             </thead> 
                             <tbody> 
@@ -52,13 +47,12 @@
                                 <tr>
 									<td>1.0</td> 
                                     <td><?php echo $cmodule; ?></td> 
-                                    <td>My first module based on LetsIgnite module development tutorial.</td> 
-                                    <td><input type="image" src="<?php echo theme_image_path('icn_edit.png'); ?>" title="Edit"><input type="image" src="<?php echo theme_image_path('icn_trash.png'); ?>" title="Trash"></td> 
+                                    <td>My first module based on LetsIgnite module development tutorial.</td>
                                 </tr>
 							<?php endforeach; ?>
                                 
                             </tbody> 
                         </table>
                     </div>
-
+                </div>
             </article><!-- end of content manager article -->
