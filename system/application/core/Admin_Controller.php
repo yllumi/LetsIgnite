@@ -19,15 +19,12 @@ class Admin_Controller extends MY_Controller {
 
         $this->template
                 ->set_partial('header', 'partials/header')
-                ->set_partial('subheader', 'partials/subheader')
                 ->set_partial('metadata', 'partials/metadata')
                 ->set_partial('sidebar', 'partials/sidebar')
                 ->set_partial('footer', 'partials/footer')
-                ->append_metadata(theme_css('layout.css'))
-                ->append_metadata(theme_js('jquery-1.5.2.min.js'))
-                ->append_metadata(theme_js('hideshow.js'))
-                ->append_metadata(theme_js('jquery.tablesorter.min.js'))
-                ->append_metadata(theme_js('jquery.equalHeight.js'));
+                ->set_partial('footer_js', 'partials/footer_js')
+                ->append_metadata(theme_css('bootstrap.css'))
+                ->append_metadata(theme_css('bootstrap-responsive.css'));
     }
 
 }
