@@ -19,13 +19,13 @@ class Module_m extends MY_Model
 	 * @access	private
 	 * @return	array
 	 */
-	function sync_modules($is_core = true)
+	function update_modules($is_core = true)
 	{
 		// scan module detected
-		$detected = $this->_scan_modules();
+		$detected = $this->_scan_modules($is_core);
 		
 		// get module list from database
-		$saved = $this->order_by('slug', 'asc')->get_all();
+		$saved = $this->order_by('slug', 'asc')->get_many_by(array('is_core' => ((int) $is_core)));
 		
 		// get just slug column for comparing
 		$slugs = array();
@@ -38,20 +38,38 @@ class Module_m extends MY_Model
 		// check the unremove module which not found in module location
 		$unremove = array_diff($slugs, $detected);
 		
-		// save the unsave
+		// delete the unremove
 		$data = false;
-		foreach($unsave as $val){
-			$details = $this->_scan_module($val, $is_core);
-			$data['name'] = $details[0]->name;
-			$data['version'] = $details[0]->version;
-			$data['description'] = $details[0]->description;
-			$data['menu'] = $details[0]->menu;
-			$data['slug'] = strtolower(url_title($details[0]->name));
+		if(count($unremove) > 0){
+			foreach($unremove as $key=>$val){
+				$slug = strtolower(url_title($val));
 			
-			$this->insert($data);
+				$this->delete_by(array('slug'=>$slug));
+			}
 		}
 		
-		return $data;
+		// save the unsave
+		$data = false;
+		if(count($unsave) > 0){
+			foreach($unsave as $val){
+				if(count($this->get_by(array('slug'=>$val, 'is_core' => (int) $is_core))) > 0){
+					continue; //send message that there is modules with same name
+				}
+				
+				$details = $this->_scan_module($val, $is_core);
+				$data['name'] = $details[0]->name;
+				$data['version'] = $details[0]->version;
+				$data['description'] = $details[0]->description;
+				$data['menu'] = $details[0]->menu;
+				$data['slug'] = strtolower(url_title($details[0]->name));
+				$data['is_core'] = (int) $is_core;
+				$data['updated_on'] = time();
+			
+				$this->insert($data);
+			}
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -81,7 +99,7 @@ class Module_m extends MY_Model
 		for($i = 0; $i < count($modules); $i++)
 			
 			// if there is details.php file, take that module
-			if(is_file($path.$modules[$i].'/details'.EXT))
+			if(is_file($path.$modules[$i].'/module_info'.EXT))
 				array_push($result, $modules[$i]);
 		
 		return $result;

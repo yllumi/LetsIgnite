@@ -14,17 +14,31 @@
                                     <th>Ver.</th> 
                                     <th>Module Name</th> 
                                     <th>Description</th> 
-                                    <th>Actions</th> 
+                                    <th>Container</th> 
+                                    <th></th> 
                                 </tr> 
                             </thead> 
                             <tbody> 
                             
                             <?php foreach($amodules as $amodule): ?>
                                 <tr>
-									<td>1.0</td> 
-                                    <td><?php echo $amodule; ?></td> 
-                                    <td>My first module based on LetsIgnite module development tutorial.</td> 
-                                    <td><input type="image" src="<?php echo theme_image_path('icn_edit.png'); ?>" title="Edit"><input type="image" src="<?php echo theme_image_path('icn_trash.png'); ?>" title="Trash"></td> 
+									<td><?php echo $amodule->version; ?></td> 
+                                    <td><?php echo $amodule->name; ?></td> 
+                                    <td><?php echo $amodule->description; ?></td> 
+                                    <td><?php echo strtoupper($amodule->menu); ?></td>
+                                    <td><?php if($amodule->installed == 1){ ?>
+											<?php if($amodule->enabled == 1){ ?>
+												<input type="image" src="<?php echo theme_image_path('bulb-yellow.png'); ?>" title="Module is enabled. Click to disable">
+											<?php } else { ?>
+												<input type="image" src="<?php echo theme_image_path('bulb-white.png'); ?>" title="Module is disabled. Click to enable">
+											<?php } ?>	
+											<input type="image" src="<?php echo theme_image_path('minus.png'); ?>" title="Uninstall">
+										<?php } else { ?>
+											<input type="image" src="<?php echo theme_image_path('plus.png'); ?>" title="Install">
+										<?php } ?>
+										<input type="image" src="<?php echo theme_image_path('icn_refresh.png'); ?>" title="Update">
+										<input type="image" src="<?php echo theme_image_path('x.png'); ?>" title="Trash">
+									</td> 
                                 </tr>
 							<?php endforeach; ?>
                                 
@@ -39,15 +53,19 @@
                                     <th>Ver.</th> 
                                     <th>Module Name</th> 
                                     <th>Description</th> 
+                                    <th>Container</th> 
+                                    <th></th> 
                                 </tr> 
                             </thead> 
                             <tbody> 
                             
                             <?php foreach($cmodules as $cmodule): ?>
                                 <tr>
-									<td>1.0</td> 
-                                    <td><?php echo $cmodule; ?></td> 
-                                    <td>My first module based on LetsIgnite module development tutorial.</td>
+									<td><?php echo $cmodule->version; ?></td> 
+                                    <td><?php echo $cmodule->name; ?></td> 
+                                    <td><?php echo $cmodule->description; ?></td>
+                                    <td><?php echo strtoupper($cmodule->menu); ?></td>
+                                    <td><input type="image" src="<?php echo theme_image_path('icn_refresh.png'); ?>" title="Update"></td> 
                                 </tr>
 							<?php endforeach; ?>
                                 
@@ -56,3 +74,5 @@
                     </div>
                 </div>
             </article><!-- end of content manager article -->
+
+	<a href="<?php echo site_url('admin/module/update_modules') ?>" class="outer_button right" title="Update All Modules">Update Modules</a>

@@ -13,13 +13,20 @@ class Admin extends Admin_Controller {
 
     function index() {
 		$this->template
-			->set('amodules', $this->module_m->scan_modules(false))
-			->set('cmodules', $this->module_m->scan_modules(true))
+			->set('amodules', $this->module_m->order_by('slug', 'asc')->get_many_by(array('is_core' => 0)))
+			->set('cmodules', $this->module_m->order_by('slug', 'asc')->get_many_by(array('is_core' => 1)))
 			->build('index');
     }
     
-    function sync_modules(){
-		print_r($this->module_m->sync_modules());
+    function update_modules(){
+		// sync core modules
+		$this->module_m->update_modules(true);
+		
+		// sync addon modules
+		$this->module_m->update_modules(false);
+		
+		// go back to lists
+		redirect('admin/module');
 	}
 
 }

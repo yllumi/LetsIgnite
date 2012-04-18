@@ -6,6 +6,7 @@ class Admin extends Admin_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->template->title('Dashboard');
     }
 
     //log the user in
