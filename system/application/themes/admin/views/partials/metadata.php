@@ -1,12 +1,17 @@
 <meta charset="utf-8">
     <title><?php echo $this->config->item('site_title', 'ion_auth') .' - '. $template['title']; ?></title>
     
+    <?php echo $template['metadata']; ?>
+    
+    <?php echo theme_css('bootstrap.css'); ?>
+    
     <style type="text/css">
       body { padding-top: 60px; padding-bottom: 40px; }
       .sidebar-nav { padding: 9px 0; }
     </style>
     
-    <?php echo $template['metadata']; ?>
+    <?php echo theme_css('bootstrap-responsive.css'); ?>
+    
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>

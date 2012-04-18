@@ -22,9 +22,7 @@ class Admin_Controller extends MY_Controller {
                 ->set_partial('metadata', 'partials/metadata')
                 ->set_partial('sidebar', 'partials/sidebar')
                 ->set_partial('footer', 'partials/footer')
-                ->set_partial('footer_js', 'partials/footer_js')
-                ->append_metadata(theme_css('bootstrap.css'))
-                ->append_metadata(theme_css('bootstrap-responsive.css'));
+                ->set_partial('footer_js', 'partials/footer_js');
     }
 
 }

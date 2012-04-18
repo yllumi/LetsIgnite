@@ -2,7 +2,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <?php echo theme_js('jquery.js'); ?>
-    <?php echo theme_js('bootstrap-transition.js.js'); ?>
+    <?php echo theme_js('bootstrap-transition.js'); ?>
     <?php echo theme_js('bootstrap-alert.js'); ?>
     <?php echo theme_js('bootstrap-modal.js'); ?>
     <?php echo theme_js('bootstrap-dropdown.js'); ?>
