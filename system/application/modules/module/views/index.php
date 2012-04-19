@@ -23,18 +23,18 @@
                         <td><?php echo $amodule->name; ?></td> 
                         <td><?php echo $amodule->description; ?></td> 
                         <td><?php echo strtoupper($amodule->menu); ?></td>
-                        <td><?php if ($amodule->installed == 1) { ?>
+                        <td style="text-align: center"><?php if ($amodule->installed == 1) { ?>
                                 <?php if ($amodule->enabled == 1) { ?>
-                                    <input type="image" src="<?php echo theme_image_path('bulb-yellow.png'); ?>" title="Module is enabled. Click to disable">
+                                    <a href="#" class="btn btn-mini" title="Module is enabled. Click to disable"><i class="icon-off"></i></a>
                                 <?php } else { ?>
-                                    <input type="image" src="<?php echo theme_image_path('bulb-white.png'); ?>" title="Module is disabled. Click to enable">
+                                    <a href="#" class="btn btn-mini" title="Module is disabled. Click to enable"><i class="icon-play-circle"></i></a>
                                 <?php } ?>	
-                                <input type="image" src="<?php echo theme_image_path('minus.png'); ?>" title="Uninstall">
+                                    <a href="#" class="btn btn-mini" title="Uninstall"><i class="icon-minus"></i></a>
                             <?php } else { ?>
-                                <input type="image" src="<?php echo theme_image_path('plus.png'); ?>" title="Install">
+                                    <a href="#" class="btn btn-mini" title="Install"><i class="icon-plus"></i></a>
                             <?php } ?>
-                            <input type="image" src="<?php echo theme_image_path('icn_refresh.png'); ?>" title="Update">
-                            <input type="image" src="<?php echo theme_image_path('x.png'); ?>" title="Remove">
+                                    <a href="#" class="btn btn-mini" title="Update"><i class="icon-time"></i></a>
+                                    <a href="#" class="btn btn-mini" title="Remove"><i class="icon-trash"></i></a>
                         </td> 
                     </tr>
                 <?php endforeach; ?>
@@ -61,7 +61,9 @@
                         <td><?php echo $cmodule->name; ?></td> 
                         <td><?php echo $cmodule->description; ?></td>
                         <td><?php echo strtoupper($cmodule->menu); ?></td>
-                        <td><input type="image" src="<?php echo theme_image_path('icn_refresh.png'); ?>" title="Update"></td> 
+                        <td style="text-align: center">
+                            <a href="#" class="btn btn-mini" title="Refresh"><i class="icon-refresh"></i></a>
+                        </td> 
                     </tr>
                 <?php endforeach; ?>
 
