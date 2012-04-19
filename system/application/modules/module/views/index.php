@@ -5,7 +5,7 @@
 
 <div class="tab-content">
     <div class="tab-pane active" id="addon">
-        <table class="table table-striped"> 
+        <table class="table table-striped table-bordered"> 
             <thead> 
                 <tr>
                     <th>Ver.</th> 
@@ -43,7 +43,7 @@
         </table>
     </div>
     <div class="tab-pane" id="core">
-        <table class="table table-striped"> 
+        <table class="table table-striped table-bordered"> 
             <thead> 
                 <tr>
                     <th>Ver.</th> 
